@@ -11,3 +11,36 @@ CREATE TABLE products(
  price FLOAT(10,2),
  stock_quantity INTEGER(11)
 );
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Razor", "Bathroom Products", 10.50, 30);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Bathrobe", "Bathroom Products", 45.99, 25);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Earbuds", "Electronics", 6.99, 50);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("TV", "Electronics", 399, 21);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Running Shoes", "Fitness", 149, 10);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Socks", "Clothing", 4.99, 30);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Pants", "Clothing", 19.50, 75);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("T-shirt", "Clothing", 15.75, 5);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Lysol", "Cleaning Products", 9.99, 35);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Dishsoap", "Cleaning Products", 5.50, 80);
+
+INSERT INTO products( product_name, department_name, price, stock_quantity)
+VALUES ("Paper Towels", "Cleaning Products", 7.75, 15);
