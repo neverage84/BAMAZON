@@ -30,13 +30,16 @@ inquirer
 
 ])
 .then(function(Response) {
-    
+    buyItem(Response.ID, Response.Quantity);
 })
 
 
 function readitems() {
-    console.log("Selecting and Displaying all products...\n");
-    db.query("SELECT * FROM products", function (err, res) {
+    db.connect(function(err) {
+        if (err) throw err;
+        console.log("connected as id" + db.threadId);
+        console.log("Selecting and Displaying all products...\n");
+        db.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
         var Items = [];
         Items.push(res);
@@ -44,7 +47,24 @@ function readitems() {
         // Log all results of the SELECT statement
         console.log(res);
         console.log(Items);
+    })
+    
         db.end();
     });
 
 }
+
+function buyItem(ItemID, ItemQuantity){
+
+    db.connect(function(err){
+    if (err) throw err;
+    db.query("SELECT * FROM products WHERE item_id =" + ItemID, function(err,res){
+        if (err) throw err;
+        console.log(res);
+        console.log(ItemQuantity);
+      
+})
+db.end();
+})
+}
+   
