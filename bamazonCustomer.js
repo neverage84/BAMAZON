@@ -12,6 +12,7 @@ var db = mysql.createConnection({
     database: "bamazon_db"
 });
 
+var Items = [];
 readitems();
 
 inquirer
@@ -41,30 +42,62 @@ function readitems() {
         console.log("Selecting and Displaying all products...\n");
         db.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
-        var Items = [];
-        Items.push(res);
+        
+       
+        
+        console.log(res);
+        
+        
        
         // Log all results of the SELECT statement
-        console.log(res);
-        console.log(Items);
+        
+        
     })
     
-        db.end();
+    
     });
 
 }
 
 function buyItem(ItemID, ItemQuantity){
 
-    db.connect(function(err){
-    if (err) throw err;
-    db.query("SELECT * FROM products WHERE item_id =" + ItemID, function(err,res){
+    
+  
+    db.query("SELECT * FROM products WHERE ?", 
+    {
+        item_id: ItemID
+    }, 
+    function(err,res){
         if (err) throw err;
-        console.log(res);
-        console.log(ItemQuantity);
+        console.log(res[0].stock_quantity);
+        if (res[0].stock_quantity < ItemQuantity) {
+            console.log("Insufficient quantity!");
+        }
+        else {
+            var NewQuantity = res[0].stock_quantity - ItemQuantity;
+            var TotalCost = parseFloat(ItemQuantity * res[0].price);
+            db.query("UPDATE products SET ? WHERE ?",
+            [
+              {
+                  stock_quantity: NewQuantity
+              } ,
+              {
+                item_id: ItemID
+              } 
+            ],
+            function(err, res){
+                if (err) throw err;
+
+                console.log(res.affectedRows + "products updated!\n");
+                console.log("Total Cost is $" + TotalCost);
+            }
+            )
+        }
+        
+        
       
 })
-db.end();
-})
+
+
 }
    
