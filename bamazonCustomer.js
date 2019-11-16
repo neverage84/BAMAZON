@@ -12,7 +12,7 @@ var db = mysql.createConnection({
     database: "bamazon_db"
 });
 
-var Items = [];
+
 readitems();
 
 inquirer
@@ -38,7 +38,6 @@ inquirer
 function readitems() {
     db.connect(function(err) {
         if (err) throw err;
-        console.log("connected as id" + db.threadId);
         console.log("Selecting and Displaying all products...\n");
         db.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
@@ -69,13 +68,13 @@ function buyItem(ItemID, ItemQuantity){
     }, 
     function(err,res){
         if (err) throw err;
-        console.log(res[0].stock_quantity);
+
         if (res[0].stock_quantity < ItemQuantity) {
             console.log("Insufficient quantity!");
         }
         else {
             var NewQuantity = res[0].stock_quantity - ItemQuantity;
-            var TotalCost = parseFloat(ItemQuantity * res[0].price);
+            var TotalCost = parseFloat(ItemQuantity * res[0].price).toFixed(2);
             db.query("UPDATE products SET ? WHERE ?",
             [
               {
@@ -88,16 +87,22 @@ function buyItem(ItemID, ItemQuantity){
             function(err, res){
                 if (err) throw err;
 
-                console.log(res.affectedRows + "products updated!\n");
+                console.log(res.affectedRows + " product updated!\n");
                 console.log("Total Cost is $" + TotalCost);
             }
+           
             )
+           
         }
         
         
-      
-})
+   db.end();   
+}
+);
+
 
 
 }
+
+
    
