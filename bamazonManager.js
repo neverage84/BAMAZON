@@ -1,6 +1,9 @@
+//Require necessary modules
+
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
+//Connect to sql database
 var db = mysql.createConnection({
  host: "localhost",
 
@@ -12,10 +15,9 @@ var db = mysql.createConnection({
  database: "bamazon_db"
 });
 
-db.connect(function(err){
-    if (err) throw err;
-    MenuOptions();
-})
+//Run Menu Options upon loading
+ MenuOptions();
+
 
 function MenuOptions(){
     inquirer
@@ -28,6 +30,8 @@ function MenuOptions(){
     }
     ])
     .then(function(Response) {
+
+    //handle each selection from menu
         switch(Response.Task){
             case "View Products for Sale":
             ViewProducts();
@@ -49,4 +53,28 @@ function MenuOptions(){
     })
 
    
+}
+
+//List all products available
+function ViewProducts(){
+    db.connect(function(err) {
+        if (err) throw err;
+        console.log("Selecting and Displaying all products...\n");
+        db.query("SELECT * FROM products", function (err, res) {
+        if (err) throw err;
+       
+        var ItemArr = [];
+        for (var i = 0; i < res.length; i++){
+            ItemArr.push(res[i]);
+            console.log("ITEM: " + res[i].item_id + " | PRODUCT: " + res[i].product_name + " | DEPARTMENT: " + res[i].department_name + " | PRICE: " + res[i].price + " | QUANTITY IN STOCK: " + res[i].stock_quantity);
+        }
+       
+        // Log all results of the SELECT statement
+    db.end(); 
+        
+    })
+    
+    
+    });
+
 }
