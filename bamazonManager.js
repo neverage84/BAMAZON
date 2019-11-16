@@ -28,7 +28,24 @@ function MenuOptions(){
     }
     ])
     .then(function(Response) {
-        console.log(Response.Task);
+        switch(Response.Task){
+            case "View Products for Sale":
+            ViewProducts();
+            break;
+
+            case "View Low Inventory":
+            LowInventory();
+            break;
+
+            case "Add to Inventory":
+            AddInv();
+            break;
+
+            case "Add New Product":
+            NewProd();
+            break;
+        }
+
     })
 
    
