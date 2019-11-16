@@ -16,3 +16,20 @@ db.connect(function(err){
     if (err) throw err;
     MenuOptions();
 })
+
+function MenuOptions(){
+    inquirer
+    .prompt([
+    {
+            type: "rawlist",
+            message: "Which task would you like to run?",
+            choices: ["View Products for Sale", "View Low Inventory", "Add to Inventory", "Add New Product"],
+            name: "Task"
+    }
+    ])
+    .then(function(Response) {
+        console.log(Response.Task);
+    })
+
+   
+}
