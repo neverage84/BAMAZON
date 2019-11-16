@@ -42,6 +42,7 @@
 
 ### Challenge #2: Manager View (Next Level)
 
+![image](https://user-images.githubusercontent.com/49047459/68985946-60178400-07cf-11ea-88c9-2cf38402b845.png)
 ![image](https://user-images.githubusercontent.com/49047459/68985914-0616be80-07cf-11ea-8219-5bf79ddf1ace.png)
 
 
