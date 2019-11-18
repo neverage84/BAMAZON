@@ -80,6 +80,7 @@ function ViewProducts(){
 }
 
 function LowInventory(){
+    
     db.connect(function(err){
         if (err) throw err;
         db.query("SELECT * FROM products WHERE stock_quantity < 5", function (err, res) {
@@ -89,3 +90,72 @@ function LowInventory(){
     db.end();
     })
 }
+
+function AddInv(){
+
+    inquirer
+   .prompt([
+       {
+           type: "input",
+           message: "For which product would you like to increase inventory (Provide ID#)",
+           name: "Add"
+       },
+       {
+           type: "input",
+           message:"What quantity are you adding?",
+           name: "AddQuantity"
+
+       }
+   ])
+   .then(function(Response){
+        UpdateItem(Response.Add, Response.AddQuantity);
+ 
+   });
+    
+  
+
+
+
+
+   function UpdateItem(IDnumber, QuantityAdded){
+     db.connect(function(err){
+    if (err) throw err;
+        if (err) throw err;
+        db.query("SELECT * FROM products WHERE ?",
+        {
+            item_id: IDnumber
+        },
+        function(err,res){
+            if (err) throw err;
+            var NewQuantity = res[0].stock_quantity + QuantityAdded;
+            db.query("UPDATE products SET ? WHERE ?",
+            [
+                {
+                  stock_quantity: NewQuantity
+                 },
+                 {
+                item_id: IDnumber
+                 }
+            ],
+            function(err,res){
+                if (err) throw err;
+                console.log(res.affectedRows + " product update!\n");
+                console.log("New Quantity is " + NewQuantity + " units.");
+            })
+db.end();
+        })    
+
+    })
+
+
+   }
+       };
+      
+       
+   
+   
+   
+ 
+
+
+
