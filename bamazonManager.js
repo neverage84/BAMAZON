@@ -127,7 +127,7 @@ function AddInv(){
         },
         function(err,res){
             if (err) throw err;
-            var NewQuantity = res[0].stock_quantity + QuantityAdded;
+            var NewQuantity = parseInt(res[0].stock_quantity) + parseInt(QuantityAdded);
             db.query("UPDATE products SET ? WHERE ?",
             [
                 {
@@ -151,10 +151,55 @@ db.end();
    }
        };
       
-       
+    //prompt from user for new product
+   function NewProd(){
+       inquirer
+       .prompt([
+           {
+               type: "input",
+               message: "Product Name?",
+               name: "Product"
+           },
+           {
+              type: "input",
+              message: "Department Name?",
+              name: "Department"
+           },
+           {
+               type: "input",
+               message: "Sales Price?",
+               name: "Price"
+           },
+           {
+               type:"input",
+               message: "Quantity?",
+               name: "Quantity"
+           }
+       ])
+       .then(function(Response){
+           addNewRow(Response.Product, Response.Department, Response.Price, Response.Quantity);
+       })
+   }
    
-   
-   
+   //function to add row
+   function addNewRow(product, department, price, quantity){
+       db.connect(function(err){
+           if (err) throw err;
+        db.query("INSERT INTO products SET ?",
+        {
+            product_name: product,
+            department_name: department,
+            price: price,
+            stock_quantity: quantity
+        },
+        function(err,res){
+            if (err) throw err;
+            console.log(res.affectedRows + " product added!\n");
+        }
+        )
+        db.end();
+       })
+   }
  
 
 
