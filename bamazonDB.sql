@@ -5,7 +5,7 @@ CREATE DATABASE bamazon_db;
 USE bamazon_db;
 
 ALTER TABLE products
-DROP product_sales
+DROP COLUMN product_sales
 ADD product_sales FLOAT(10,2) DEFAULT 0;
 
 CREATE TABLE products(
@@ -57,3 +57,20 @@ over_head_costs INTEGER(11),
 PRIMARY KEY (department_id)
 );
 
+INSERT INTO departments( department_name, over_head_costs)
+VALUES ("Bathroom Products", 800);
+
+INSERT INTO departments( department_name, over_head_costs)
+VALUES ("Electronics", 50000);
+
+INSERT INTO departments( department_name, over_head_costs)
+VALUES ("Fitness", 750);
+
+INSERT INTO departments( department_name, over_head_costs)
+VALUES ("Clothing", 300);
+
+INSERT INTO departments( department_name, over_head_costs)
+VALUES ("Cleaning Products", 300);
+
+INSERT INTO departments( department_name, over_head_costs)
+VALUES ("Alcohol", 250);
