@@ -78,10 +78,12 @@ function buyItem(ItemID, ItemQuantity){
         else {
             var NewQuantity = res[0].stock_quantity - ItemQuantity;
             var TotalCost = parseFloat(ItemQuantity * res[0].price).toFixed(2);
+            var AggTotalCost = res[0].product_sales + TotalCost;
             db.query("UPDATE products SET ? WHERE ?",
             [
               {
-                  stock_quantity: NewQuantity
+                  stock_quantity: NewQuantity,
+                  product_sales: AggTotalCost
               } ,
               {
                 item_id: ItemID
