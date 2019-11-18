@@ -77,13 +77,13 @@ function buyItem(ItemID, ItemQuantity){
         }
         else {
             var NewQuantity = res[0].stock_quantity - ItemQuantity;
-            var TotalCost = parseFloat(ItemQuantity * res[0].price).toFixed(2);
-            var AggTotalCost = res[0].product_sales + TotalCost;
+            var TotalPrice = parseFloat(ItemQuantity * res[0].price).toFixed(2);
+            var AggTotalPrice = parseFloat(res[0].product_sales + TotalPrice).toFixed(2);
             db.query("UPDATE products SET ? WHERE ?",
             [
               {
                   stock_quantity: NewQuantity,
-                  product_sales: AggTotalCost
+                  product_sales: AggTotalPrice
               } ,
               {
                 item_id: ItemID
@@ -93,7 +93,7 @@ function buyItem(ItemID, ItemQuantity){
                 if (err) throw err;
 
                 console.log(res.affectedRows + " product updated!\n");
-                console.log("Total Cost is $" + TotalCost);
+                console.log("Total Cost is $" + TotalPrice);
             }
            
             )
