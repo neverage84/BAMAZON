@@ -5,7 +5,8 @@ CREATE DATABASE bamazon_db;
 USE bamazon_db;
 
 ALTER TABLE products
-ADD product_sales FLOAT(10,2);
+DROP product_sales
+ADD product_sales FLOAT(10,2) DEFAULT 0;
 
 CREATE TABLE products(
  item_id INTEGER(11) AUTO_INCREMENT,
