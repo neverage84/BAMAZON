@@ -45,8 +45,9 @@
 ### Challenge #2: Manager View (Next Level)
 
 ![image](https://user-images.githubusercontent.com/49047459/68985946-60178400-07cf-11ea-88c9-2cf38402b845.png)
-![image](https://user-images.githubusercontent.com/49047459/68985914-0616be80-07cf-11ea-8219-5bf79ddf1ace.png)
-![image](https://user-images.githubusercontent.com/49047459/69019171-380d5980-0964-11ea-8fb4-d893e63674df.png)
+![image](https://user-images.githubusercontent.com/49047459/69094930-2a101500-0a06-11ea-9cd3-3f2b15d59361.png)
+![image](https://user-images.githubusercontent.com/49047459/69095315-e669db00-0a06-11ea-9d8e-74a5730c6437.png)
+![image](https://user-images.githubusercontent.com/49047459/69095460-42ccfa80-0a07-11ea-8c7b-25ec9412130b.png)
 
 * Create a new Node application called `bamazonManager.js`. Running this application will:
 

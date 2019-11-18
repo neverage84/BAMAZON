@@ -144,7 +144,8 @@ function AddInv(){
             function(err,res){
                 if (err) throw err;
                 console.log(res.affectedRows + " product update!\n");
-                console.log("New Quantity is " + NewQuantity + " units.");
+                console.log("New Quantity is " + NewQuantity + " units.");  
+                
             })
 db.end();
         })    
@@ -199,6 +200,7 @@ db.end();
         function(err,res){
             if (err) throw err;
             console.log(res.affectedRows + " product added!\n");
+           
         }
         )
         db.end();
