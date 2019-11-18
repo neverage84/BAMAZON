@@ -1,4 +1,5 @@
 var inquirer = require("inquirer");
+const cTable = require('console.table');
 
 var mysql = require("mysql");
 var db = mysql.createConnection({
@@ -39,17 +40,17 @@ function readitems() {
     db.connect(function(err) {
         if (err) throw err;
         console.log("Selecting and Displaying all products...\n");
-        db.query("SELECT * FROM products", function (err, res) {
+        db.query("SELECT item_id, product_name, department_name, price, stock_quantity FROM products", function (err, res) {
         if (err) throw err;
-        
+        const table = cTable.getTable(res);
+       console.log(table);
        
         
        
-       
-        for (var i = 0; i < res.length; i++){
+        // for (var i = 0; i < res.length; i++){
            
-            console.log("ITEM: " + res[i].item_id + " | PRODUCT: " + res[i].product_name + " | DEPARTMENT: " + res[i].department_name + " | PRICE: " + res[i].price + " | QUANTITY IN STOCK: " + res[i].stock_quantity);
-        }
+        //     console.log("ITEM: " + res[i].item_id + " | PRODUCT: " + res[i].product_name + " | DEPARTMENT: " + res[i].department_name + " | PRICE: " + res[i].price + " | QUANTITY IN STOCK: " + res[i].stock_quantity);
+        // }
        
         // Log all results of the SELECT statement
         
