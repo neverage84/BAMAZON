@@ -59,3 +59,34 @@ function ViewProductSales(){
         db.end();
     })
 }
+
+function NewDepartment(){
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            message: "Department Name",
+            name:"DPN"
+        },
+        {
+            type:"input",
+            message:"What are the Overhead Costs?",
+            name:"Overhead"
+        }
+    ])
+    .then(function(Response){
+        db.connect(function(err){
+            if (err) throw err;
+            db.query("INSERT INTO departments SET ?",
+            {
+                department_name: Response.DPN,
+                over_head_costs: Response.Overhead
+            },
+            function(err,res){
+                if (err) throw err;
+                console.log (res.affectedRows +  "department Added");
+            }
+            )
+        })
+    })
+}
