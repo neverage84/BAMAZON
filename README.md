@@ -1,6 +1,6 @@
 # BAMAZON
 
-![image](https://user-images.githubusercontent.com/49047459/69092353-08f8f580-0a01-11ea-85b8-dd613e7a3988.png)
+![image](https://user-images.githubusercontent.com/49047459/69092773-fd59fe80-0a01-11ea-88b1-aa777ab2ecf0.png)
 
 
 

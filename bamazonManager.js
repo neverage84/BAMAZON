@@ -2,6 +2,7 @@
 
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+const cTable = require('console.table');
 
 //Connect to sql database
 var db = mysql.createConnection({
@@ -63,11 +64,13 @@ function ViewProducts(){
         db.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
        
+        const table = cTable.getTable(res);
+        console.log(table);
         
-        for (var i = 0; i < res.length; i++){
+        // for (var i = 0; i < res.length; i++){
            
-            console.log("ITEM: " + res[i].item_id + " | PRODUCT: " + res[i].product_name + " | DEPARTMENT: " + res[i].department_name + " | PRICE: " + res[i].price + " | QUANTITY IN STOCK: " + res[i].stock_quantity + " | PRODUCT SALES: " + res[i].product_sales);
-        }
+        //     console.log("ITEM: " + res[i].item_id + " | PRODUCT: " + res[i].product_name + " | DEPARTMENT: " + res[i].department_name + " | PRICE: " + res[i].price + " | QUANTITY IN STOCK: " + res[i].stock_quantity + " | PRODUCT SALES: " + res[i].product_sales);
+        
        
         // Log all results of the SELECT statement
     db.end(); 
@@ -85,7 +88,8 @@ function LowInventory(){
         if (err) throw err;
         db.query("SELECT * FROM products WHERE stock_quantity < 5", function (err, res) {
             if (err) throw err;
-            console.log(res);
+            const table = cTable.getTable(res);
+            console.log(table);
         })
     db.end();
     })
