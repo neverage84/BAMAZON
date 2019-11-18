@@ -2,6 +2,7 @@
 
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+const cTable = require('console.table');
 
 //Connect to sql database
 var db = mysql.createConnection({
@@ -46,8 +47,14 @@ function SupervisorMenuOptions(){
 function ViewProductSales(){
     db.connect(function(err){
         if (err) throw err;
-        console.log("Selecting and Displaying Product Sales by Department...");
-
+        console.log("Selecting and Displaying Product Sales by Department...\n");
+        db.query("SELECT departments.department_id, departments.department_name, departments.over_head_costs, products.product_sales FROM departments JOIN products ON (departments.department_name = products.department_name)",
+        function(err,res){
+            if (err) throw err;
+            const table = cTable.getTable(res);
+            console.log(table);
+        }
+        )
 
         db.end();
     })
