@@ -63,10 +63,10 @@ function ViewProducts(){
         db.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
        
-        var ItemArr = [];
+        
         for (var i = 0; i < res.length; i++){
-            ItemArr.push(res[i]);
-            console.log("ITEM: " + res[i].item_id + " | PRODUCT: " + res[i].product_name + " | DEPARTMENT: " + res[i].department_name + " | PRICE: " + res[i].price + " | QUANTITY IN STOCK: " + res[i].stock_quantity);
+           
+            console.log("ITEM: " + res[i].item_id + " | PRODUCT: " + res[i].product_name + " | DEPARTMENT: " + res[i].department_name + " | PRICE: " + res[i].price + " | QUANTITY IN STOCK: " + res[i].stock_quantity + " | PRODUCT SALES: " + res[i].product_sales);
         }
        
         // Log all results of the SELECT statement
