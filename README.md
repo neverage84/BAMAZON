@@ -1,6 +1,6 @@
 # BAMAZON
 
-![image](https://user-images.githubusercontent.com/49047459/68984592-c5667780-07c5-11ea-94af-457ac085943c.png)
+![image](https://user-images.githubusercontent.com/49047459/69019319-f7faa680-0964-11ea-8101-1bae028642a0.png)
 
 
 ### Challenge #1: Customer View (Minimum Requirement)
