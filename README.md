@@ -76,6 +76,7 @@
 - - -
 
 Challenge #3: Supervisor View (Final Level)
+![image](https://user-images.githubusercontent.com/49047459/69210102-8b231000-0b0e-11ea-9bcc-bae6d295c8ef.png)
 
 
 Create a new MySQL table called departments. Your table should include the following columns:
@@ -105,8 +106,6 @@ View Product Sales by Department
 
 
 Create New Department
-
-
 
 
 When a supervisor selects View Product Sales by Department, the app should display a summarized table in their terminal/bash window. Use the table below as a guide.

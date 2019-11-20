@@ -48,7 +48,7 @@ function ViewProductSales(){
     db.connect(function(err){
         if (err) throw err;
         console.log("Selecting and Displaying Product Sales by Department...\n");
-        db.query("SELECT departments.department_id, departments.department_name, departments.over_head_costs, SUM(products.product_sales), SUM(products.product_sales) - departments.over_head_costs AS 'total_profit' FROM departments JOIN products ON (departments.department_name = products.department_name) GROUP BY departments.department_name, departments.department_id",
+        db.query("SELECT departments.department_id, departments.department_name, departments.over_head_costs, SUM(products.product_sales) AS 'product_sales', SUM(products.product_sales)  - departments.over_head_costs AS 'total_profit' FROM departments JOIN products ON (departments.department_name = products.department_name) GROUP BY departments.department_name, departments.department_id",
         function(err,res){
             if (err) throw err;
             const table = cTable.getTable(res);
